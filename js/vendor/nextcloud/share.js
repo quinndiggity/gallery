@@ -581,8 +581,13 @@
 			$linkCheckbox.attr('data-id', id);
 			var $linkText = $('#linkText');
 
-			var link = parent.location.protocol + '//' + location.host +
-				OC.generateUrl('/apps/' + Gallery.appName + '/s/') + token;
+			if (Gallery.appName === 'files') {
+				var link = parent.location.protocol + '//' + location.host +
+					OC.generateUrl('/s/') + token;
+			} else {
+				var link = parent.location.protocol + '//' + location.host +
+					OC.generateUrl('/apps/' + Gallery.appName + '/s/') + token;
+			}
 
 			$linkText.val(link);
 			$linkText.slideDown(OC.menuSpeed);
